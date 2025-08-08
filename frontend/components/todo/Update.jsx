@@ -15,14 +15,19 @@ const Update = ({ task, closeUpdate }) => {
   };
 
   const handleKeyDown = (e, field) => {
-  if (e.key === "Enter" && !e.shiftKey) {
-    e.preventDefault();
-    if (field === "title") {
-      const textarea = document.getElementById("textarea");
-      textarea.style.display = "block";
-      textarea.focus();
-    } else if (field === "body") {
-      submit();
+    if (e.key === "Enter") {
+      if (field === "body" && e.shiftKey) {
+        return;
+      }
+
+      e.preventDefault();
+
+      if (field === "title") {
+        const textarea = document.getElementById("textarea");
+        textarea.style.display = "block";
+        textarea.focus();
+      } else if (field === "body") {
+        handleUpdate();
       }
     }
   };
@@ -36,7 +41,7 @@ const Update = ({ task, closeUpdate }) => {
     }
 
     try {
-      await axios.put(`${import.meta.envVITE_REACT_APP_RACKEND_BASEURL}/lists/updateTask/${task.id}`, {
+      await axios.put(`${import.meta.env.VITE_REACT_APP_RACKEND_BASEURL}/lists/updateTask/${task.id}`, {
         title: form.title,
         body: form.body,
         id: userId,
@@ -63,14 +68,14 @@ const Update = ({ task, closeUpdate }) => {
         onKeyDown={(e) => handleKeyDown(e, "title")}
       />
       <textarea
-        id="textarea"
-        placeholder="BODY"
+        type="textarea"
+        className="update-input"
         name="body"
-        value={input.body}
-        className="todo-input textarea"
-        onChange={change}
+        placeholder="BODY"
+        value={form.body}
+        onChange={handleChange}
         onKeyDown={(e) => handleKeyDown(e, "body")}
-/>
+      />
       <div>
         <button className="todo-btn" onClick={handleUpdate}>Update</button>
         <button className="todo-btn" onClick={closeUpdate}>Cancel</button>
