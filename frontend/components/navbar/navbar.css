@@ -1,0 +1,43 @@
+.user-png{
+    width: 30px;
+    height: 30px;
+}
+
+.navbar-brand{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.btn-nav{
+    color: white !important;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.sign-up{
+    background-color: #4CAF50;
+}
+
+.sign-in{
+    background-color: #00c6ff;
+}
+
+.log-out{
+    background-color: #ff4d4f;
+}
+
+@media screen and (max-width: 991px) {
+  .sign-up, .sign-in, .log-out {
+    background-color: transparent !important;
+    color: black !important;
+    
+    padding: 0 !important;
+    border: none !important;
+    display: inline !important;
+    margin-bottom: 30px;
+  }
+  .navbar-nav .nav-item {
+    margin-bottom: 10px;
+  }
+  
+}

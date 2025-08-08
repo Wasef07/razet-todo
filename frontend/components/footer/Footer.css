@@ -1,0 +1,13 @@
+.footer-container{
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-container h4,
+.footer-container p {
+  margin: 0;
+  text-align: center;
+  color: #444;
+}
