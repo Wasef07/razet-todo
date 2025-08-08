@@ -26,7 +26,7 @@ const SignIn = () => {
     }
 
     try {
-      const response = await axios.post(`${import.meta.envVITE_REACT_APP_RACKEND_BASEURL}/auth/login`, inputs);
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_RACKEND_BASEURL}/auth/login`, inputs);
 
       if (response.data && response.data.message === "Login successful") {
         sessionStorage.setItem("id", response.data.id);

@@ -23,7 +23,7 @@ const Todo = () => {
   useEffect(() => {
     if (isLoggedIn && id) {
       axios
-        .get(`${import.meta.envVITE_REACT_APP_RACKEND_BASEURL}/lists/getTasks/${id}`)
+        .get(`${import.meta.env.VITE_REACT_APP_RACKEND_BASEURL}/lists/getTasks/${id}`)
         .then((response) => {
           if (response.data.list) {
             setArray(response.data.list);
@@ -53,7 +53,7 @@ const Todo = () => {
 
     if (isLoggedIn && id) {
       try {
-        await axios.post(`${import.meta.envVITE_REACT_APP_RACKEND_BASEURL}/lists/addTask`, {
+        await axios.post(`${import.meta.env.VITE_REACT_APP_RACKEND_BASEURL}/lists/addTask`, {
           title: input.title,
           body: input.body,
           id: id,
@@ -62,7 +62,7 @@ const Todo = () => {
         setInput({ title: "", body: "" });
         toast.success("Task added successfully!");
 
-        const response = await axios.get(`${import.meta.envVITE_REACT_APP_RACKEND_BASEURL}/lists/getTasks/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_RACKEND_BASEURL}/lists/getTasks/${id}`);
         setArray(response.data.list || []);
       } catch {
         toast.error("Failed to save task. Please try again.");
@@ -77,7 +77,7 @@ const Todo = () => {
     const userId = sessionStorage.getItem("id");
     if (userId) {
       try {
-        await axios.delete(`${import.meta.envVITE_REACT_APP_RACKEND_BASEURL}/lists/deleteTask/${taskId}`, {
+        await axios.delete(`${import.meta.env.VITE_REACT_APP_RACKEND_BASEURL}/lists/deleteTask/${taskId}`, {
           data: { id: userId },
         });
 
@@ -98,7 +98,7 @@ const Todo = () => {
 
   const handleKeyDown = (e, field) => {
     if (e.key === "Enter") {
-      if (field === "body" && e.shiftKey) return; // Allow newline
+      if (field === "body" && e.shiftKey) return; 
 
       e.preventDefault();
 

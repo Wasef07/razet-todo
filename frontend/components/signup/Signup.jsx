@@ -24,8 +24,9 @@ const SignUp = () => {
       return;
     }
 
+
     try {
-      const response = await axios.post(`${import.meta.envVITE_REACT_APP_RACKEND_BASEURL}/auth/register`, inputs);
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_RACKEND_BASEURL}/auth/register`, inputs);
 
       if (response.data.message === "User already exists") {
         toast.error(response.data.message);
